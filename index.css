@@ -1,0 +1,31 @@
+#fotocabecalho {
+    padding: 20px;
+    margin-left: 80px;
+    margin-right: 10px;
+    height: 50%;
+}
+
+.header {
+    padding: 60px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    font-size: 30px;
+}
+
+img {
+    width: 100%;
+    height: 50%;
+}
+
+.footer {
+    padding: 60px;
+    text-align: center;
+    background: #65cc76;
+    color: white;
+    font-size: 30px;
+}
+
+#brTraduzir {
+    padding: 60px;
+}
