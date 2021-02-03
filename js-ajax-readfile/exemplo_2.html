@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Exemplo 2</title>
+
+    <link href="https://www.ifsc.edu.br/ifsc-internet-lf6_2-theme/images/favicon.ico" rel="Shortcut Icon">
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+        
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<div class="mt-3 container col-4"> 
+
+    Exemplo 2. Leitura de um arquivo usando Ajax e mostrando em um DataTable
+
+</div>
+
+<div class="mt-3 container col-4"> 
+
+    <table id='table' class="table table-striped table-bordered small" >
+    </table>
+
+</div>    
+
+</body>
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
+<!-- Data Tables JS -->
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+
+var dataset = []
+
+$(document).ready( function () {
+
+    $.ajax({
+        type: "GET",
+        url: "data.txt",
+        dataType: "text",
+        success: function(data) {            
+            x = data;
+            linhas = data.split('\n');
+            
+            for (let index = 0; index < linhas.length; index++) {
+                let linha = linhas[index];
+                let linha_dados = linha.split(',');
+                dataset.push(linha_dados);            
+            }
+            
+            $('#table').DataTable( {
+                data: dataset,
+                columns: [
+                    { title: "Palavra" },
+                    { title: "Frequência" },                    
+                ]
+            } );
+        
+        }
+     });
+});
+
+</script>
+
+</html>
+
+

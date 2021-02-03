@@ -1,0 +1,3 @@
+Buen dia,100
+Buenas tardes,70
+Buenas noches,50

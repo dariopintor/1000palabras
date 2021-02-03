@@ -1,20 +1,12 @@
-function xhrSuccess() { this.callback.apply(this, this.arguments); }
+var file = this.files[0];
 
-function xhrError() { console.error(this.statusText); }
+var reader = new FileReader("leia.txt");
 
-function loadFile(sURL, fCallback /*, argumentToPass1, argumentToPass2, etc. */ ) {
-    var oReq = new XMLHttpRequest();
-    oReq.callback = fCallback;
-    oReq.arguments = Array.prototype.slice.call(arguments, 2);
-    oReq.onload = xhrSuccess;
-    oReq.onerror = xhrError;
-    oReq.open("get", sURL, true);
-    oReq.send(null);
+// Entire file
+console.log(this.result);
+
+// By lines
+var lines = this.result.split('\n');
+for (var line = 0; line < lines.length; line++) {
+    console.log(lines[line]);
 }
-
-
-function showMessage(sMsg) {
-    alert(sMsg + this.responseText);
-}
-
-loadFile("https://www.admiralty.co.uk/AdmiraltyDownloadMedia/AVCS/README.txt", showMessage, "New message!\n\n");
